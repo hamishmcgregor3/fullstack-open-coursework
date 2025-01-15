@@ -3,14 +3,7 @@ sequenceDiagram
     participant browser
     participant server
 
-    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note
-    activate server
-    Note right of server: User input data is sent as body of POST request, from this the server creates a new note object and adds it to array 'notes'
-    server-->>browser: HTTP status code 302
-    deactivate server
-    Note right of server: Server responds with a URL redirect to the address in Response Header's Location: /exampleapp/notes
-
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
     activate server
     server-->>browser: HTML document
     deactivate server
@@ -20,9 +13,9 @@ sequenceDiagram
     server-->>browser: the CSS file
     deactivate server
 
-    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.js
+    browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
     activate server
-    server-->>browser: the JavaScript file
+    server-->>browser: the SPA JavaScript file
     deactivate server
     Note left of browser: The browser starts executing the JavaScript code that fetches the JSON from the server
 
